@@ -41,7 +41,7 @@ This project required the following third-party libraries and models to be made 
 
 ## Data Retrieval
 
-### Metadata and File data
+### <u> Metadata and File Data </u>
 
 Relevant data: Title, Artist, Contributing Artists, Year, Genre, Duration (ms), Size (bits), Bit rate, Created Date, Last Modified Date
 
@@ -53,7 +53,7 @@ These data are mainly retrieved using Mutagen:
 
 3. **Integration with Other Libraries**: Mutagen was easily integrated with other Python libraries for audio processing and analysis.
 
-### Musical Data
+### <u> Musical Data </u>
 
 Relevant data: Musical Notation (Key, with major and minor distinction), Tempo/BPM, Lowest Note, Highest Note, Mode Note, Frequencies of Spectrogram (C2-G#5)
 
@@ -88,7 +88,7 @@ An interface for analyzing highest, lowest, mode notes and the music spectrogram
 
 Read 'Example usage' in the module for usages of the class.
 
-### Linguistics Data
+### <u> Linguistics Data </u>
 
 Relevant data: Language of track
 
@@ -108,7 +108,7 @@ An interface for predicting the included language of an audio file
 
 Read 'Sample usages' in the module for usages of the class.
 
-### Spotify Data
+### <u> Spotify Data </u>
 
 Relevant data: Official Spotify title, official Spotify artist name, and track dynamics. 
 
@@ -130,7 +130,7 @@ Interfaces for connecting to the Spotify API and presenting terminal UI given a 
 
 Read 'Example usage' in the module for usages of the class.
 
-### Web Data
+### <u> Web Data </u>
 
 Relevant data: Vocal Artist gender. 
 
