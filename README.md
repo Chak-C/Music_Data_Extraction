@@ -88,7 +88,7 @@ An interface for analyzing highest, lowest, mode notes and the music spectrogram
 
 Read 'Example usage' in the module for usages of the class.
 
-## Linguistics Data
+### Linguistics Data
 
 Relevant data: Language of track
 
@@ -108,7 +108,7 @@ An interface for predicting the included language of an audio file
 
 Read 'Sample usages' in the module for usages of the class.
 
-## Spotify Data
+### Spotify Data
 
 Relevant data: Official Spotify title, official Spotify artist name, and track dynamics. 
 
@@ -130,7 +130,7 @@ Interfaces for connecting to the Spotify API and presenting terminal UI given a 
 
 Read 'Example usage' in the module for usages of the class.
 
-## Web Data
+### Web Data
 
 Relevant data: Vocal Artist gender. 
 
