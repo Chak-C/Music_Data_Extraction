@@ -4,6 +4,10 @@
 
 Given a list of tracks in MP3 formats, produce or extract a series of data relevant to the files and store them in CSV files (utf-8).
 
+## Music PowerBI Dashboard Project Link
+
+[https://github.com/Chak-C/PBI_playlist_dashboard]
+
 ## About the project
 
 This project aims to break down a musical piece and retrieve relevant data (check below) through integrating multiple mathematical approaches, deep learning (DL) and artifical intelligence 
