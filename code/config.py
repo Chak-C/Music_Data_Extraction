@@ -2,7 +2,7 @@
 # Note: ('Almost' the same as my youtube MP3 converter project's configuration file)
 
 # Initialize linguistic processing variables
-ROOT_ASSET_PATH = "C:\\Users\\Alvis\\Desktop\\Music\\BI\\Extraction\\assets\\"
+ROOT_ASSET_PATH = "\\assets\\" # adjust root path
 LANGUAGE_CODE_MAP1 = "code_language_map.json"
 LANGUAGE_CODE_MAP2 = "fasttext_language_map.json"
 FASTTEXT_MODEL = 'lid.176.ftz'
@@ -12,8 +12,8 @@ CURRENT_TRACK_TITLE = ''
 CURRENT_TRACK_ARTIST = '' # configurated in get_trackID (spotify_analysis.py)
 
 # Spotify
-CLIENT_ID = '49b8247f173447b3a2bf1bda588153c4'
-CLIENT_SECRET = '43fd0edf8b0e495c81dc1b38cc237b77'
+CLIENT_ID = '' # Add id
+CLIENT_SECRET = '' # Add secret
 
 SPOTIFY_API_ENDPOINT = 'https://accounts.spotify.com/api/token'
 SPOTIFY_TOKEN = '' # Valids for 30-60 mins every run
