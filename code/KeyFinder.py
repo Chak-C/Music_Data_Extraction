@@ -38,6 +38,8 @@ class Key_Finder():
         # number of keys present in the y
         self.keyfreqs = {chroma_to_key[i]: self.chromo_vals[i] for i in range(12)}
         
+        #print(self.keyfreqs)
+        #{'C': 3400.2705, 'C#': 4598.6323, 'D': 3689.142, 'D#': 3358.1611, 'E': 3651.1636, 'F': 4995.2744, 'F#': 6058.3125, 'G': 4546.5664, 'G#': 4586.827, 'A': 4149.5166, 'A#': 4395.574, 'B': 3649.0479}#
         self.major_cor = []
         self.minor_cor = []
 

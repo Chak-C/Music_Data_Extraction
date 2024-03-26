@@ -10,6 +10,7 @@ import config as c
 from mutagen.mp3 import MP3
 from mutagen.easyid3 import EasyID3
 from termcolor import colored
+import regex_spm
 
 FOLDER_PATH = "C:\\Users\\Alvis\\Desktop\\Music"
 OUTPUT_ROOT = "C:\\Users\\Alvis\\Desktop\\Music\\BI\\Extraction\\output\\"
@@ -61,39 +62,48 @@ for root, dir, folder in os.walk(FOLDER_PATH):
                 if not track_id: print(colored('NO TRACK DETECTED', 'red'))
                 else: print(colored(f'VERIFYING NEW ARTIST: {artist}', 'green'))
 
-                print(f"[{title}] Recorded artist: {artist} New artist: {c.CURRENT_TRACK_ARTIST}")
-                info = input(f"Enter spotify artist name if incorrect (or 'not_exist' if not avaialble in spotify): ")
+                print(colored(f"[{title}] Recorded artist: {artist} New artist: {c.CURRENT_TRACK_ARTIST}", 'yellow'))
+
+                print("\nChange the spotify artist name if incorrect <artist> (One repeat only)")
+                print("If unsure, enter complete information in format <title, artist>")
+                print("Press enter (or singular character) will confirm the presented data.\n")
                 
-                if ',' in info:
-                    repeat = 're'
-                    
-                    confirm_title, confirm_artist = info.split(',')
-                    # Repeat the process if user wants to continue searching
-                    while repeat == 're':
-                        track_id = sa.get_trackID(confirm_title.strip(), confirm_artist.strip())
-                        print(f"[{title}] Input artist: {confirm_artist} New artist: {c.CURRENT_TRACK_ARTIST}")
-                        repeat = input(f"Enter track_title, track_artist if incorrect (or any character to leave loop): ")
-                        if ',' in repeat:
-                            confirm_title, confirm_artist = repeat.split(',')
-                            repeat = 're'
-                        else:
-                            repeat = 'retreat'
-                    
-                    # If no track id, forfid
-                    if not track_id:
-                        track_data.extend(['',''])
-                        track_data.extend(track_features)
-                        data.append(track_data)
-                        print('moving on')
-                        continue
+                info = input(f"Your response: ")
 
-                # If input is not of '%,%' format then classify as forfid track data
-                elif info:
-                    track_data.extend(['',''])
-                    track_data.extend(track_features)
-                    data.append(track_data)
-                    continue
+                match regex_spm.fullmatch_in(info):
+                    case r'^[^,]*,[^,]*$':
+                        repeat = 're'
+                        confirm_title, confirm_artist = str(info).split(',')
+                        
+                        # Repeat the process if user wants to continue searching
+                        while repeat == 're':
+                            track_id = sa.get_trackID(confirm_title.strip(), confirm_artist.strip())
+                            print(colored(f"\n[{confirm_title}] Input artist: {confirm_artist}, Found artist: {c.CURRENT_TRACK_ARTIST}", 'yellow'))
+                            repeat = input(f"Validate information, <title, artist> to try again, or anything (except ',') to leave loop:")
 
+                            match  regex_spm.fullmatch_in(repeat):
+                                case r'^[^,]*,[^,]*$':
+                                    confirm_title, confirm_artist = str(repeat).split(',')
+                                    repeat = 're'
+                                case _:
+                                    repeat = 'retreat'
+
+                        pass
+                    case r"^[0-9a-zA-Z][0-9a-zA-Z]*$":
+                        confirm_artist = str(info)
+                        track_id = sa.get_trackID(title.strip(), confirm_artist.strip())
+                        print(colored(f"\n[{title}] Input artist: {confirm_artist}, Found artist: {c.CURRENT_TRACK_ARTIST}", 'yellow'))
+                        pass
+                    case _: # Information is correct, pass the match case
+                        pass
+                
+            # If no track id, forfid
+            if not track_id:
+                track_data.extend(['',''])
+                track_data.extend(track_features)
+                data.append(track_data)
+                print('moving on')
+                continue
                     
             # if if-statement(s) does not proc, then track id must be correct
             artists[artist] = c.CURRENT_TRACK_ARTIST

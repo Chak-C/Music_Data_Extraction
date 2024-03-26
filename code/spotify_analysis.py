@@ -58,7 +58,6 @@ def get_trackID(track_name, artist = None):
         track_id = results['tracks']['items'][0]['id']
         c.CURRENT_TRACK_TITLE = track_name
         c.CURRENT_TRACK_ARTIST = results['tracks']['items'][0]['artists'][0]['name']
-        print(results['tracks']['items'][0]['artists'])
         return track_id
     else:
         print('Track ID not found. It may not exist in the Spotify library. Please confirm track_name and artist are valid and retry.')
